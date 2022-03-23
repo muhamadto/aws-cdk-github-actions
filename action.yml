@@ -1,6 +1,6 @@
-name: 'AWS CDK GitHub Actions'
-description: 'Runs AWS-CDK via GitHub Actions.'
-author: 'youyo <1003ni2@gmail.com>'
+name: 'AWS CDK GitHub Actions Maven'
+description: 'Runs Java AWS-CDK via GitHub Actions'
+author: 'guy.chauliac@gmail.com'
 branding:
   icon: 'terminal'
   color: 'yellow'
