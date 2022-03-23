@@ -8,6 +8,8 @@ AWS-CDK GitHub Actions allow you to run `cdk deploy` and `cdk diff` and ... on y
 - JavaScript
 - Python
 - Golang
+- Java
+- Maven
 
 ## Example usage
 
@@ -19,8 +21,11 @@ jobs:
     runs-on: ubuntu-latest
     steps:
 
+      - name: Checkout repository
+        uses: actions/checkout@v2
+        
       - name: cdk diff
-        uses: youyo/aws-cdk-github-actions@v2
+        uses: guychauliac/aws-cdk-github-actions@v3.0.0
         with:
           cdk_subcommand: 'diff'
           actions_comment: true
@@ -33,8 +38,7 @@ jobs:
         uses: youyo/aws-cdk-github-actions@v2
         with:
           cdk_subcommand: 'deploy'
-          cdk_stack: 'stack1'
-          cdk_args: '--require-approval never'
+           cdk_args: '--require-approval never'
           actions_comment: false
         env:
           AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
@@ -53,34 +57,6 @@ jobs:
           AWS_DEFAULT_REGION: 'ap-northeast-1'
 ```
 
-### Can I take a assume-role?
-
-If you use assume-role, we recommended using awscredswrap!  
-See: https://github.com/marketplace/actions/aws-assume-role-github-actions#use-as-github-actions
-
-```yaml
-on: [push]
-
-jobs:
-  aws_cdk:
-    runs-on: ubuntu-latest
-    steps:
-      - name: Assume Role
-        uses: youyo/awscredswrap@master
-        with:
-          role_arn: ${{ secrets.ROLE_ARN }}
-          duration_seconds: 3600
-          role_session_name: 'awscredswrap@GitHubActions'
-        env:
-          AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
-          AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
-          AWS_DEFAULT_REGION: 'ap-northeast-1'
-
-      - name: cdk diff
-        uses: youyo/aws-cdk-github-actions@v2
-        with:
-          cdk_subcommand: 'diff'
-```
 
 ## Inputs
 
@@ -109,4 +85,4 @@ Recommended to get `AWS_ACCESS_KEY_ID` and `AWS_SECRET_ACCESS_KEY` from secrets.
 
 ## Author
 
-[youyo](https://github.com/youyo)
+[guychauliac](https://github.com/guychauliac/)
