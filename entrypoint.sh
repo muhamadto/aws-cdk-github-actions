@@ -10,10 +10,6 @@ function parseInputs(){
 	fi
 }
 
-function installTypescript(){
-	npm install typescript
-}
-
 function installAwsCdk(){
 	echo "Install aws-cdk ${INPUT_CDK_VERSION}"
 	if [ "${INPUT_CDK_VERSION}" == "latest" ]; then
@@ -39,23 +35,6 @@ function installAwsCdk(){
 			echo "Failed to install aws-cdk ${INPUT_CDK_VERSION}"
 		else
 			echo "Successful install aws-cdk ${INPUT_CDK_VERSION}"
-		fi
-	fi
-}
-
-function installPipRequirements(){
-	if [ -e "requirements.txt" ]; then
-		echo "Install requirements.txt"
-		if [ "${INPUT_DEBUG_LOG}" == "true" ]; then
-			pip install -r requirements.txt
-		else
-			pip install -r requirements.txt >/dev/null 2>&1
-		fi
-
-		if [ "${?}" -ne 0 ]; then
-			echo "Failed to install requirements.txt"
-		else
-			echo "Successful install requirements.txt"
 		fi
 	fi
 }
@@ -99,9 +78,7 @@ ${output}
 function main(){
 	parseInputs
 	cd ${GITHUB_WORKSPACE}/${INPUT_WORKING_DIR}
-	installTypescript
 	installAwsCdk
-	installPipRequirements
 	runCdk ${INPUT_CDK_ARGS}
 }
 

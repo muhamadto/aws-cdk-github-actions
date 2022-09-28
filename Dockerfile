@@ -1,10 +1,6 @@
-FROM alpine:3.13
+FROM alpine:3.16
 
-RUN apk --update --no-cache add nodejs npm python3 py3-pip jq curl bash git docker openjdk8 maven && \
-	ln -sf /usr/bin/python3 /usr/bin/python
-
-COPY --from=golang:alpine /usr/local/go/ /usr/local/go/
-ENV PATH="/usr/local/go/bin:${PATH}"
+RUN apk --update --no-cache add nodejs npm jq curl bash git docker openjdk17 maven
 
 COPY entrypoint.sh /entrypoint.sh
 

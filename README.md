@@ -1,13 +1,9 @@
-# AWS-CDK GitHub Actions
+# AWS-CDK GitHub Actions (Java)
 
 AWS-CDK GitHub Actions allow you to run `cdk deploy` and `cdk diff` and ... on your pull requests to help you review.
 
 ## Supported language
 
-- TypeScript
-- JavaScript
-- Python
-- Golang
 - Java
 - Maven
 
@@ -25,7 +21,7 @@ jobs:
         uses: actions/checkout@v2
         
       - name: cdk diff
-        uses: guychauliac/aws-cdk-github-actions@v3.0.0
+        uses: noverant/aws-cdk-github-actions@v1
         with:
           cdk_subcommand: 'diff'
           actions_comment: true
@@ -35,10 +31,10 @@ jobs:
           AWS_DEFAULT_REGION: 'ap-northeast-1'
 
       - name: cdk deploy
-        uses: youyo/aws-cdk-github-actions@v2
+        uses: noverant/aws-cdk-github-actions@v2
         with:
           cdk_subcommand: 'deploy'
-           cdk_args: '--require-approval never'
+          cdk_args: '--require-approval never'
           actions_comment: false
         env:
           AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
@@ -46,7 +42,7 @@ jobs:
           AWS_DEFAULT_REGION: 'ap-northeast-1'
 
       - name: cdk synth
-        uses: youyo/aws-cdk-github-actions@v2
+        uses: noverant/aws-cdk-github-actions@v1
         with:
           cdk_subcommand: 'synth'
           cdk_version: '1.16.2'
@@ -85,4 +81,4 @@ Recommended to get `AWS_ACCESS_KEY_ID` and `AWS_SECRET_ACCESS_KEY` from secrets.
 
 ## Author
 
-[guychauliac](https://github.com/guychauliac/)
+[noverant](https://github.com/noverant/)
