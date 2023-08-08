@@ -8,7 +8,7 @@ jobs:
     steps:
       - name: cdk diff
         id: diff
-        uses: noverant/aws-cdk-github-actions@master
+        uses: muhmadto/aws-cdk-github-actions@master
         with:
           cdk_subcommand: 'diff'
           actions_comment: true

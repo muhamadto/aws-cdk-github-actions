@@ -1,6 +1,6 @@
 name: 'AWS CDK GitHub Actions (Java)'
 description: 'Runs Java AWS-CDK via GitHub Actions'
-author: 'jputney@noverant.com'
+author: 'muhamadto@gmal.com'
 branding:
   icon: 'terminal'
   color: 'yellow'

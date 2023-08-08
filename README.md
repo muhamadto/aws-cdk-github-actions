@@ -4,7 +4,7 @@ AWS-CDK GitHub Actions allow you to run `cdk deploy` and `cdk diff` and ... on y
 
 ## Supported language
 
-- Java
+- Java 20
 - Maven
 
 ## Example usage
@@ -21,7 +21,7 @@ jobs:
         uses: actions/checkout@v2
         
       - name: cdk diff
-        uses: noverant/aws-cdk-github-actions@v1
+        uses: muhmadto/aws-cdk-github-actions@v1
         with:
           cdk_subcommand: 'diff'
           actions_comment: true
@@ -31,7 +31,7 @@ jobs:
           AWS_DEFAULT_REGION: 'ap-northeast-1'
 
       - name: cdk deploy
-        uses: noverant/aws-cdk-github-actions@v2
+        uses: muhmadto/aws-cdk-github-actions@v2
         with:
           cdk_subcommand: 'deploy'
           cdk_args: '--require-approval never'
@@ -42,7 +42,7 @@ jobs:
           AWS_DEFAULT_REGION: 'ap-northeast-1'
 
       - name: cdk synth
-        uses: noverant/aws-cdk-github-actions@v1
+        uses: muhmadto/aws-cdk-github-actions@v1
         with:
           cdk_subcommand: 'synth'
           cdk_version: '1.16.2'
@@ -81,4 +81,4 @@ Recommended to get `AWS_ACCESS_KEY_ID` and `AWS_SECRET_ACCESS_KEY` from secrets.
 
 ## Author
 
-[noverant](https://github.com/noverant/)
+[muhmadto](https://github.com/muhmadto/)
