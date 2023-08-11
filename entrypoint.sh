@@ -45,7 +45,7 @@ function runCdk(){
 	cdk ${INPUT_CDK_SUBCOMMAND} ${*} "${INPUT_CDK_STACK}" 2>&1 | tee output.log
 	exitCode=${?}
 	set +o pipefail
-	echo ::set-output name=status_code::${exitCode}
+	echo ::setOutput name=status_code::${exitCode}
 	output=$(cat output.log)
 
 	commentStatus="Failed"
